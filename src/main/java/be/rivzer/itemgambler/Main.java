@@ -1,7 +1,8 @@
 package be.rivzer.itemgambler;
 
-import be.rivzer.itemgambler.Listeners.InventoryClickEvent;
-import be.rivzer.itemgambler.Listeners.PlayerInteract;
+import be.rivzer.itemgambler.Commands.OpenMenu;
+import be.rivzer.itemgambler.Config.Config;
+import be.rivzer.itemgambler.Listeners.InventoryClick;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -9,19 +10,15 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
 
-        Bukkit.getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new InventoryClickEvent(), this);
+        Config.createCustomConfig1();
 
-        saveDefaultConfig();
+        System.out.print(Logger.color("&aPlugin &2ItemGambler &ais opgestart"));
 
-        System.out.println("Plugin is opgestard!  \n");
+        Bukkit.getServer().getPluginManager().registerEvents(new InventoryClick(), this);
+
+        new OpenMenu(this);
 
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
 }

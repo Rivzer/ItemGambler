@@ -9,5 +9,4 @@ public class Logger {
         return ChatColor.translateAlternateColorCodes('&', message);
 
     }
-
 }
